@@ -6,265 +6,53 @@
   <title>교육과정 | K.A.R.E</title>
   <meta name="description" content="K.A.R.E AI·로보틱스 교육과정 안내. 생성형 AI, 로보틱스, 스마트제조, 자율주행, AI 비즈니스 과정을 제공합니다." />
   <style>
-    :root{
-      --navy:#031B4E;
-      --deep:#020B1F;
-      --blue:#00C8FF;
-      --sky:#5CE1FF;
-      --text:#ffffff;
-      --muted:#BFDDF3;
-      --line:rgba(92,225,255,.22);
-    }
-
-    *{margin:0;padding:0;box-sizing:border-box;}
-    html{scroll-behavior:smooth;}
-    body{
-      font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;
-      background:var(--deep);
-      color:var(--text);
-      overflow-x:hidden;
-    }
-    a{text-decoration:none;color:inherit;}
-
-    .nav{
-      position:fixed;
-      top:0;left:0;right:0;
-      height:78px;
-      padding:0 6.5%;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      z-index:1000;
-      background:rgba(2,11,31,.72);
-      backdrop-filter:blur(18px);
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-    .brand{display:flex;flex-direction:column;gap:2px;letter-spacing:.5px;}
-    .brand strong{font-size:34px;font-weight:900;letter-spacing:5px;line-height:1;}
-    .brand strong span{color:var(--blue);}
-    .brand small{font-size:12px;color:#d8ecff;opacity:.9;}
-    .menu{display:flex;gap:30px;align-items:center;}
-    .menu a{font-size:14px;color:#d9edff;opacity:.86;transition:.25s;}
-    .menu a:hover,.menu a.active{color:var(--blue);opacity:1;}
-    .menu .cta{padding:12px 20px;border:1px solid rgba(92,225,255,.48);border-radius:999px;background:rgba(0,200,255,.08);}
-
-    .sub-hero{
-      min-height:64vh;
-      padding:150px 6.5% 72px;
-      display:flex;
-      align-items:center;
-      position:relative;
-      overflow:hidden;
-      background:
-        linear-gradient(90deg, rgba(2,12,35,.98) 0%, rgba(2,12,35,.88) 46%, rgba(2,12,35,.38) 100%),
-        url("assets/ai-robot-hero.png");
-      background-size:cover;
-      background-position:center;
-    }
-    .sub-hero:before{
-      content:"";
-      position:absolute;inset:0;
-      background:
-        radial-gradient(circle at 78% 36%, rgba(0,200,255,.28), transparent 34%),
-        radial-gradient(circle at 20% 78%, rgba(0,100,255,.23), transparent 36%);
-      pointer-events:none;
-    }
-    .sub-hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:120px;background:linear-gradient(transparent,var(--deep));}
-    .hero-inner{position:relative;z-index:2;max-width:920px;}
-    .kicker{color:var(--sky);font-weight:900;letter-spacing:1px;margin-bottom:16px;}
-    h1{font-size:68px;line-height:1.12;font-weight:900;letter-spacing:-2px;margin-bottom:26px;text-shadow:0 8px 30px rgba(0,0,0,.35);}
-    h1 span,h2 span{color:var(--blue);}
-    .lead{font-size:23px;line-height:1.65;color:#e4f4ff;max-width:780px;}
-
-    section{padding:92px 6.5%;}
-    .section-head{max-width:820px;margin-bottom:44px;}
-    h2{font-size:46px;line-height:1.2;letter-spacing:-1.2px;margin-bottom:18px;}
-    .desc{font-size:18px;line-height:1.72;color:var(--muted);}
-
-    .course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-    .course-card{
-      min-height:360px;
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:28px;
-      background:linear-gradient(180deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
-      box-shadow:0 18px 50px rgba(0,0,0,.2);
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-    }
-    .course-card .icon{font-size:34px;}
-    .course-card h3{font-size:25px;}
-    .course-card p{font-size:16px;line-height:1.62;color:#cfe8fa;}
-    .course-card ul{padding-left:18px;color:#d9efff;line-height:1.9;font-size:15.5px;}
-    .tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;}
-    .tag{font-size:13px;color:#04162e;background:linear-gradient(135deg,var(--blue),#75e9ff);border-radius:999px;padding:8px 11px;font-weight:800;}
-
-    .track-section{background:linear-gradient(135deg,#06295e 0%,#020b1f 72%);border-top:1px solid rgba(92,225,255,.12);border-bottom:1px solid rgba(92,225,255,.12);}
-    .track-list{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
-    .track{padding:26px 22px;border-radius:22px;background:rgba(0,200,255,.07);border:1px solid rgba(92,225,255,.25);}
-    .track b{display:block;color:var(--blue);font-size:13px;margin-bottom:12px;}
-    .track strong{display:block;font-size:23px;margin-bottom:10px;}
-    .track span{color:#bcd8ee;line-height:1.55;font-size:15px;}
-
-    .schedule{display:grid;grid-template-columns:1fr 1fr;gap:22px;}
-    .panel{border:1px solid rgba(92,225,255,.22);border-radius:26px;padding:30px;background:rgba(255,255,255,.055);}
-    .panel h3{font-size:25px;margin-bottom:18px;color:#fff;}
-    .panel li{margin-left:18px;color:#d7ecff;line-height:1.9;}
-
-    .cta-band{text-align:center;background:linear-gradient(135deg,rgba(0,200,255,.13),rgba(255,255,255,.035));border-top:1px solid rgba(92,225,255,.16);}
-    .cta-band h2{font-size:52px;}
-    .buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:30px;}
-    .btn{padding:16px 28px;border-radius:999px;font-weight:800;display:inline-flex;align-items:center;gap:10px;font-size:16px;transition:.25s;}
-    .btn.primary{background:linear-gradient(135deg,var(--blue),#75e9ff);color:#03162f;box-shadow:0 0 30px rgba(0,200,255,.28);}
-    .btn.ghost{border:1px solid rgba(255,255,255,.42);color:white;background:rgba(255,255,255,.04);}
-    .btn:hover{transform:translateY(-3px);}
-
-    footer{padding:32px 6.5%;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;background:#020814;color:#91b6d6;font-size:14px;border-top:1px solid rgba(255,255,255,.08);}
-
-    @media(max-width:1100px){
-      h1{font-size:54px;}
-      .course-grid{grid-template-columns:repeat(2,1fr);}
-      .track-list{grid-template-columns:repeat(2,1fr);}
-      .schedule{grid-template-columns:1fr;}
-    }
-    @media(max-width:760px){
-      .nav{height:68px;padding:0 5%;}
-      .brand strong{font-size:26px;}
-      .brand small,.menu{display:none;}
-      .sub-hero{padding:124px 5% 68px;background-position:68% center;}
-      h1{font-size:40px;letter-spacing:-1px;}
-      .lead{font-size:18px;}
-      section{padding:72px 5%;}
-      h2{font-size:34px;}
-      .course-grid,.track-list{grid-template-columns:1fr;}
-      .cta-band h2{font-size:36px;}
-    }
+    :root{--ink:#0a0a0a;--paper:#fff;--soft:#f4f4f1;--line:#deded8;--muted:#555b61;--orange:#ff5a1f;--orange-dark:#d94812;}
+    *{margin:0;padding:0;box-sizing:border-box;} html{scroll-behavior:smooth;} body{font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo",Arial,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;} a{text-decoration:none;color:inherit;}
+    .nav{position:fixed;top:0;left:0;right:0;height:76px;padding:0 5.5%;display:flex;align-items:center;justify-content:space-between;z-index:1000;background:rgba(255,255,255,.94);backdrop-filter:blur(14px);border-bottom:1px solid rgba(0,0,0,.08);} .brand{display:flex;align-items:flex-end;gap:10px;font-weight:900;letter-spacing:4px;} .brand strong{font-size:31px;line-height:1;} .brand strong span{color:var(--orange);} .brand small{font-size:11px;letter-spacing:.04em;color:#555;text-transform:uppercase;margin-bottom:2px;} .menu{display:flex;gap:30px;align-items:center;} .menu a{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.04em;color:#111;transition:.2s;} .menu a:hover,.menu a.active{color:var(--orange);} .menu .cta{padding:12px 18px;border:2px solid var(--ink);background:#fff;} .menu .cta:hover{background:#111;color:#fff;}
+    .sub-hero{min-height:72vh;padding:150px 5.5% 82px;display:flex;align-items:flex-end;position:relative;overflow:hidden;background:#080808;color:#fff;} .sub-hero:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.84),rgba(0,0,0,.58),rgba(0,0,0,.16)),url("assets/ai-robot-hero.png") center/cover;transform:scale(1.02);} .sub-hero:after{content:"";position:absolute;left:0;right:0;bottom:0;height:8px;background:var(--orange);} .hero-inner{position:relative;z-index:1;max-width:920px;} .kicker{font-size:13px;font-weight:950;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:16px;} h1{font-size:76px;line-height:.98;font-weight:950;letter-spacing:-3px;margin-bottom:28px;} .lead{font-size:22px;line-height:1.6;color:#f0f0f0;max-width:760px;}
+    section{padding:96px 5.5%;} .section-head{display:grid;grid-template-columns:.9fr 1.1fr;gap:54px;align-items:end;margin-bottom:52px;} h2{font-size:52px;line-height:1.05;letter-spacing:-2px;font-weight:950;} .desc{font-size:18px;line-height:1.7;color:var(--muted);max-width:760px;}
+    .course-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line);} .course-card{min-height:380px;padding:30px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff;display:flex;flex-direction:column;transition:.2s;} .course-card:hover{background:#111;color:#fff;} .course-card .icon{font-size:32px;margin-bottom:24px;} .course-card h3{font-size:28px;line-height:1.15;margin-bottom:16px;} .course-card p{font-size:16px;line-height:1.65;color:#5c646b;margin-bottom:18px;} .course-card:hover p{color:#ddd;} .course-card ul{padding-left:18px;line-height:1.9;font-size:15.5px;color:#555;} .course-card:hover ul{color:#ddd;} .tag-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;} .tag{font-size:12px;color:#fff;background:var(--orange);padding:8px 10px;font-weight:900;text-transform:uppercase;letter-spacing:.05em;}
+    .track-section{background:#111;color:#fff;} .track-section .desc{color:#d4d4d4;} .track-list{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid #3b3b3b;border-left:1px solid #3b3b3b;} .track{padding:30px 24px;min-height:220px;border-right:1px solid #3b3b3b;border-bottom:1px solid #3b3b3b;} .track b{display:block;color:var(--orange);font-size:12px;letter-spacing:.1em;margin-bottom:20px;} .track strong{display:block;font-size:26px;margin-bottom:14px;} .track span{color:#d2d2d2;line-height:1.6;font-size:15px;}
+    .schedule{display:grid;grid-template-columns:1fr 1fr;gap:24px;} .panel{border:1px solid var(--line);background:var(--soft);padding:34px;min-height:260px;} .panel h3{font-size:29px;margin-bottom:20px;} .panel li{margin-left:18px;color:#555;line-height:1.9;}
+    .cta-band{background:#0b0b0b;color:#fff;text-align:center;position:relative;overflow:hidden;} .cta-band:before{content:"";position:absolute;inset:0;background:url("assets/ai-robot-hero.png") center/cover;opacity:.22;} .cta-band > div{position:relative;z-index:1;max-width:860px;margin:auto;} .cta-band h2{font-size:56px;margin-bottom:20px;} .cta-band .desc{color:#e2e2e2;margin:auto;} .buttons{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:30px;} .btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:15px 24px;border:2px solid currentColor;font-size:14px;font-weight:900;letter-spacing:.04em;text-transform:uppercase;transition:.2s;} .btn.primary{background:var(--orange);border-color:var(--orange);color:#fff;} .btn.primary:hover{background:var(--orange-dark);border-color:var(--orange-dark);} .btn.ghost{color:#fff;background:transparent;} .btn.ghost:hover{background:#fff;color:#111;border-color:#fff;}
+    footer{padding:44px 5.5%;display:grid;grid-template-columns:1.2fr repeat(3,1fr);gap:28px;background:#050505;color:#fff;border-top:8px solid var(--orange);} footer h4{font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-bottom:16px;color:#bfbfbf;} footer a,footer p{display:block;color:#e4e4e4;font-size:14px;line-height:1.9;}
+    @media(max-width:1120px){h1{font-size:58px;}.section-head{grid-template-columns:1fr;}.course-grid{grid-template-columns:repeat(2,1fr);}.track-list,.schedule{grid-template-columns:1fr 1fr;} footer{grid-template-columns:1fr 1fr;}}
+    @media(max-width:760px){.nav{height:68px;padding:0 5%;}.brand strong{font-size:25px;}.brand small,.menu{display:none;}.sub-hero{padding:130px 5% 72px;min-height:78vh;} h1{font-size:42px;letter-spacing:-1px;}.lead{font-size:18px;} section{padding:72px 5%;} h2,.cta-band h2{font-size:36px;letter-spacing:-1px;}.course-grid,.track-list,.schedule{grid-template-columns:1fr;} footer{grid-template-columns:1fr;}}
   </style>
 </head>
 <body>
   <header class="nav">
-    <a class="brand" href="index.html#home" aria-label="K.A.R.E Home">
-      <strong>K<span>.</span>A<span>.</span>R<span>.</span>E</strong>
-      <small>Korea AI & Robotics Future Talent Hub</small>
-    </a>
-    <nav class="menu" aria-label="Main navigation">
-      <a href="index.html#about">ABOUT</a>
-      <a href="courses.html" class="active">ACADEMY</a>
-      <a href="index.html#ecosystem">ECOSYSTEM</a>
-      <a href="index.html#business">BUSINESS</a>
-      <a href="index.html#contact" class="cta">CONTACT</a>
-    </nav>
+    <a class="brand" href="index.html#home" aria-label="K.A.R.E Home"><strong>K<span>.</span>A<span>.</span>R<span>.</span>E</strong><small>AI Robotics Hub</small></a>
+    <nav class="menu" aria-label="Main navigation"><a href="index.html#about">About</a><a href="courses.html" class="active">Academy</a><a href="index.html#solutions">Solutions</a><a href="index.html#business">Business</a><a href="index.html#contact" class="cta">Contact</a></nav>
   </header>
 
   <main>
     <section class="sub-hero">
-      <div class="hero-inner">
-        <div class="kicker">K.A.R.E ACADEMY</div>
-        <h1>AI·로보틱스 실무형<br><span>교육과정</span></h1>
-        <p class="lead">기초 이해부터 프로젝트 실습, 인증, 기업 연계까지 이어지는 미래산업 인재 양성 과정입니다.</p>
-      </div>
+      <div class="hero-inner"><div class="kicker">K.A.R.E Academy</div><h1>AI·로보틱스<br>교육과정</h1><p class="lead">기초 이해부터 프로젝트 실습, 인증, 기업 연계까지 이어지는 미래산업 인재 양성 과정입니다.</p></div>
     </section>
 
     <section id="courses">
-      <div class="section-head">
-        <div class="kicker">CURRICULUM</div>
-        <h2>분야별 핵심 과정을 <span>하나의 로드맵</span>으로 제공합니다</h2>
-        <p class="desc">입문자, 재직자, 기업 교육, 취업 준비생이 각자의 목표에 맞춰 선택할 수 있는 실무 중심 과정입니다.</p>
-      </div>
+      <div class="section-head"><div><div class="kicker">Curriculum</div><h2>분야별 핵심 과정을 하나의 로드맵으로 제공합니다.</h2></div><p class="desc">입문자, 재직자, 기업 교육, 취업 준비생이 각자의 목표에 맞춰 선택할 수 있는 실무 중심 과정입니다.</p></div>
       <div class="course-grid">
-        <article class="course-card">
-          <div class="icon">🧠</div>
-          <h3>생성형 AI 실무</h3>
-          <p>업무 자동화와 콘텐츠 제작, 데이터 분석에 바로 활용하는 생성형 AI 과정입니다.</p>
-          <ul><li>프롬프트 엔지니어링</li><li>AI Agent 업무 자동화</li><li>문서·마케팅·데이터 활용</li></ul>
-          <div class="tag-row"><span class="tag">입문</span><span class="tag">실무</span><span class="tag">4주</span></div>
-        </article>
-        <article class="course-card">
-          <div class="icon">🤖</div>
-          <h3>로보틱스 운영</h3>
-          <p>협동로봇과 서비스로봇의 구조, 운영, 현장 적용을 배우는 과정입니다.</p>
-          <ul><li>로봇 기초 구조</li><li>센서·제어 이해</li><li>현장 운영 시나리오</li></ul>
-          <div class="tag-row"><span class="tag">기초</span><span class="tag">실습</span><span class="tag">6주</span></div>
-        </article>
-        <article class="course-card">
-          <div class="icon">🏭</div>
-          <h3>스마트제조 AI</h3>
-          <p>제조 데이터와 AI를 활용해 생산성과 품질 개선 아이디어를 실습합니다.</p>
-          <ul><li>스마트팩토리 개론</li><li>제조 데이터 분석</li><li>디지털트윈 활용</li></ul>
-          <div class="tag-row"><span class="tag">산업</span><span class="tag">프로젝트</span><span class="tag">8주</span></div>
-        </article>
-        <article class="course-card">
-          <div class="icon">🚗</div>
-          <h3>자율주행·모빌리티</h3>
-          <p>자율주행, 드론, 스마트 물류 기술의 핵심 흐름을 프로젝트로 학습합니다.</p>
-          <ul><li>센서와 인지 기술</li><li>경로 계획 기초</li><li>모빌리티 서비스 기획</li></ul>
-          <div class="tag-row"><span class="tag">미래차</span><span class="tag">드론</span><span class="tag">6주</span></div>
-        </article>
-        <article class="course-card">
-          <div class="icon">🚀</div>
-          <h3>AI 비즈니스 창업</h3>
-          <p>AI 서비스를 기획하고 사업화 전략, 마케팅, 수익모델까지 설계합니다.</p>
-          <ul><li>AI 서비스 기획</li><li>사업모델 설계</li><li>시장 검증과 발표</li></ul>
-          <div class="tag-row"><span class="tag">창업</span><span class="tag">기획</span><span class="tag">5주</span></div>
-        </article>
-        <article class="course-card">
-          <div class="icon">🎓</div>
-          <h3>기업 맞춤 교육</h3>
-          <p>조직의 직무와 현장 과제에 맞춘 AI 전환 교육을 설계합니다.</p>
-          <ul><li>재직자 AI 리터러시</li><li>부서별 자동화 워크숍</li><li>현장 문제 해결 프로젝트</li></ul>
-          <div class="tag-row"><span class="tag">B2B</span><span class="tag">맞춤형</span><span class="tag">협의</span></div>
-        </article>
+        <article class="course-card"><div class="icon">🧠</div><h3>생성형 AI 실무</h3><p>업무 자동화와 콘텐츠 제작, 데이터 분석에 바로 활용하는 생성형 AI 과정입니다.</p><ul><li>프롬프트 엔지니어링</li><li>AI Agent 업무 자동화</li><li>문서·마케팅·데이터 활용</li></ul><div class="tag-row"><span class="tag">입문</span><span class="tag">실무</span><span class="tag">4주</span></div></article>
+        <article class="course-card"><div class="icon">🤖</div><h3>로보틱스 운영</h3><p>협동로봇과 서비스로봇의 구조, 운영, 현장 적용을 배우는 과정입니다.</p><ul><li>로봇 기초 구조</li><li>센서·제어 이해</li><li>현장 운영 시나리오</li></ul><div class="tag-row"><span class="tag">기초</span><span class="tag">실습</span><span class="tag">6주</span></div></article>
+        <article class="course-card"><div class="icon">🏭</div><h3>스마트제조 AI</h3><p>제조 데이터와 AI를 활용해 생산성과 품질 개선 아이디어를 실습합니다.</p><ul><li>스마트팩토리 개론</li><li>제조 데이터 분석</li><li>디지털트윈 활용</li></ul><div class="tag-row"><span class="tag">산업</span><span class="tag">프로젝트</span><span class="tag">8주</span></div></article>
+        <article class="course-card"><div class="icon">🚗</div><h3>자율주행·모빌리티</h3><p>자율주행, 드론, 스마트 물류 기술의 핵심 흐름을 프로젝트로 학습합니다.</p><ul><li>센서와 인지 기술</li><li>경로 계획 기초</li><li>모빌리티 서비스 기획</li></ul><div class="tag-row"><span class="tag">미래차</span><span class="tag">드론</span><span class="tag">6주</span></div></article>
+        <article class="course-card"><div class="icon">🚀</div><h3>AI 비즈니스 창업</h3><p>AI 서비스를 기획하고 사업화 전략, 마케팅, 수익모델까지 설계합니다.</p><ul><li>AI 서비스 기획</li><li>사업모델 설계</li><li>시장 검증과 발표</li></ul><div class="tag-row"><span class="tag">창업</span><span class="tag">기획</span><span class="tag">5주</span></div></article>
+        <article class="course-card"><div class="icon">🎓</div><h3>기업 맞춤 교육</h3><p>조직의 직무와 현장 과제에 맞춘 AI 전환 교육을 설계합니다.</p><ul><li>재직자 AI 리터러시</li><li>부서별 자동화 워크숍</li><li>현장 문제 해결 프로젝트</li></ul><div class="tag-row"><span class="tag">B2B</span><span class="tag">맞춤형</span><span class="tag">협의</span></div></article>
       </div>
     </section>
 
     <section class="track-section">
-      <div class="section-head">
-        <div class="kicker">LEARNING TRACK</div>
-        <h2>학습부터 현장 연결까지 <span>단계적으로 성장</span>합니다</h2>
-        <p class="desc">각 과정은 이론 강의보다 실습과 결과물 중심으로 운영됩니다.</p>
-      </div>
-      <div class="track-list">
-        <div class="track"><b>TRACK 01</b><strong>기초 진단</strong><span>학습 목적과 기술 수준을 확인해 적합한 과정을 추천합니다.</span></div>
-        <div class="track"><b>TRACK 02</b><strong>핵심 교육</strong><span>AI·로봇·제조·모빌리티 핵심 개념을 빠르게 익힙니다.</span></div>
-        <div class="track"><b>TRACK 03</b><strong>프로젝트</strong><span>업무 또는 산업 현장 문제를 주제로 결과물을 만듭니다.</span></div>
-        <div class="track"><b>TRACK 04</b><strong>연계 지원</strong><span>인증, 포트폴리오, 기업 프로젝트, 취업·창업 연계를 지원합니다.</span></div>
-      </div>
+      <div class="section-head"><div><div class="kicker">Learning Track</div><h2>학습부터 현장 연결까지 단계적으로 성장합니다.</h2></div><p class="desc">각 과정은 이론 강의보다 실습과 결과물 중심으로 운영됩니다.</p></div>
+      <div class="track-list"><div class="track"><b>TRACK 01</b><strong>기초 진단</strong><span>학습 목적과 기술 수준을 확인해 적합한 과정을 추천합니다.</span></div><div class="track"><b>TRACK 02</b><strong>핵심 교육</strong><span>AI·로봇·제조·모빌리티 핵심 개념을 빠르게 익힙니다.</span></div><div class="track"><b>TRACK 03</b><strong>프로젝트</strong><span>업무 또는 산업 현장 문제를 주제로 결과물을 만듭니다.</span></div><div class="track"><b>TRACK 04</b><strong>연계 지원</strong><span>인증, 포트폴리오, 기업 프로젝트, 취업·창업 연계를 지원합니다.</span></div></div>
     </section>
 
-    <section>
-      <div class="section-head">
-        <div class="kicker">OPERATION</div>
-        <h2>대상에 맞춘 <span>운영 방식</span></h2>
-      </div>
-      <div class="schedule">
-        <div class="panel">
-          <h3>개인 수강 과정</h3>
-          <ul><li>입문자와 취업 준비생을 위한 정규 과정</li><li>평일 저녁반, 주말 집중반 운영 가능</li><li>프로젝트 결과물과 수료 인증 제공</li></ul>
-        </div>
-        <div class="panel">
-          <h3>기업·기관 과정</h3>
-          <ul><li>직무별 AI 전환 교육 설계</li><li>제조·로봇·마케팅·경영 부서별 커리큘럼 구성</li><li>현장 과제 기반 워크숍 및 임직원 교육</li></ul>
-        </div>
-      </div>
-    </section>
+    <section><div class="section-head"><div><div class="kicker">Operation</div><h2>대상에 맞춘 운영 방식</h2></div><p class="desc">개인 수강 과정과 기업·기관 과정을 분리해 목적에 맞는 학습 경험을 제공합니다.</p></div><div class="schedule"><div class="panel"><h3>개인 수강 과정</h3><ul><li>입문자와 취업 준비생을 위한 정규 과정</li><li>평일 저녁반, 주말 집중반 운영 가능</li><li>프로젝트 결과물과 수료 인증 제공</li></ul></div><div class="panel"><h3>기업·기관 과정</h3><ul><li>직무별 AI 전환 교육 설계</li><li>제조·로봇·마케팅·경영 부서별 커리큘럼 구성</li><li>현장 과제 기반 워크숍 및 임직원 교육</li></ul></div></div></section>
 
-    <section class="cta-band">
-      <div class="section-head" style="margin-left:auto;margin-right:auto;text-align:center;">
-        <div class="kicker">CONTACT</div>
-        <h2>교육과정 상담이 필요하신가요?</h2>
-        <p class="desc">목표와 대상에 맞는 과정을 함께 설계해드립니다.</p>
-        <div class="buttons">
-          <a href="mailto:contact@karehub.kr" class="btn primary">교육 문의하기</a>
-          <a href="index.html" class="btn ghost">메인으로 돌아가기</a>
-        </div>
-      </div>
-    </section>
+    <section class="cta-band"><div><div class="kicker">Contact</div><h2>교육과정 상담이 필요하신가요?</h2><p class="desc">목표와 대상에 맞는 과정을 함께 설계해드립니다.</p><div class="buttons"><a href="mailto:contact@karehub.kr" class="btn primary">교육 문의하기</a><a href="index.html" class="btn ghost">메인으로 돌아가기</a></div></div></section>
   </main>
 
-  <footer>
-    <div>K.A.R.E | Korea AI & Robotics Future Talent Hub</div>
-    <div>Education · Research · Industry · Startup · Global</div>
-  </footer>
+  <footer><div><h4>K.A.R.E</h4><p>Korea AI & Robotics Future Talent Hub</p></div><div><h4>Navigation</h4><a href="index.html#about">About</a><a href="courses.html">Academy</a></div><div><h4>Resources</h4><a href="index.html#solutions">Solutions</a><a href="index.html#contact">Contact</a></div><div><h4>Focus</h4><p>Education · Research · Industry · Startup · Global</p></div></footer>
 </body>
 </html>
